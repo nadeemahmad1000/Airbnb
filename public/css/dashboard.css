@@ -1,0 +1,664 @@
+#logo-box > h2 {
+    color: #ff385c;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 0.25rem;
+    margin-bottom: 0.45rem;
+}
+
+.dashboard > h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-image: radial-gradient(circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.add-new-room-button-box, .add-new-room-button {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.add-new-room-button-box > span {
+    font-size: 1.063rem;
+    font-weight: 600;
+    margin-right: 1.5rem;
+}
+
+.add-new-room-button-box > a {
+    text-decoration: none;
+}
+
+.add-new-room-button {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--theme-color);
+    border-radius: 0.5rem;
+    outline: none;
+    background-image: radial-gradient(circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+    transition: 0.2s all;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.add-new-room-button > img {
+    width: 1.375rem;
+    height: 1.375rem;
+    margin-right: 0.5rem;
+}
+
+.add-new-room-button:active {
+    transform: scale(0.92);
+}
+
+main {
+    grid-template-rows: 1fr;
+}
+
+#welcome-box {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    padding: 2.5rem 0;
+}
+
+#welcome-box > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+    gap: 1rem 0;
+}
+
+#welcome-box > div > h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    background-image: radial-gradient(circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#welcome-box > div > p {
+    color: #444444;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+#welcome-box > div > img {
+    width: 100%;
+}
+
+#dashboard {
+    padding: 1.5rem 0;
+}
+
+.welcome-host {
+    display: flex;
+    flex-direction: column;
+    place-items: flex-start;
+    place-content: center;
+    gap: 1rem 0;
+}
+
+.welcome-host > h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-image: radial-gradient(circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.welcome-host > span {
+    color: #333333;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.welcome-host > span > strong {
+    font-weight: 600;
+}
+
+#rooms {
+    grid-template-columns: repeat(auto-fill, minmax(60rem, auto));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.room {
+    gap: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #dddddd;
+}
+
+.room-information {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    place-items: flex-start;
+    place-content: center;
+    gap: 2rem;
+}
+
+.room-preview {
+    width: 24rem;
+    aspect-ratio: 41 / 40;
+}
+
+.room-preview > a > img {
+    aspect-ratio: 41 / 40;
+}
+
+.host-room-information {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.room-title-and-desc {
+    display: flex;
+    flex-direction: column;
+    place-items: flex-start;
+    place-content: flex-start;
+    gap: 1rem 0;
+}
+
+.room-description {
+    line-height: 1.32rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.room-id-and-type, .price-and-discount, .availability {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+.bold {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.bold > a, .bold > span {
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-left: 0.5rem;
+}
+
+.bold > a:hover {
+    text-decoration: underline;
+}
+
+.room-title {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.room-description {
+    font-size: 0.9rem;
+}
+
+.blur {
+    opacity: 0.56;
+}
+
+.update-hide-delete-box {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    gap: 0 10rem;
+}
+
+.update-hide-delete-box > a {
+    width: 100%;
+}
+
+.edit {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: 0.2s all;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.update-room {
+    cursor: pointer;
+    border: 1px solid #046420;
+    background: linear-gradient(#046420 0%, #043c14 100%);
+}
+
+.visible-room {
+    cursor: pointer;
+    border: 1px solid #f79e05;
+    background: linear-gradient(#f79e05 0%, #8f5408 100%);
+}
+
+.delete-room {
+    cursor: pointer;
+    border: 1px solid #f70505;
+    background: linear-gradient(#f70505 0%, #8F0808 100%);
+}
+
+.edit > i {
+    color: #ffffff;
+    font-size: 0.95rem;
+    margin-right: 0.5rem;
+}
+
+.edit:hover {
+    filter: brightness(0.85);
+}
+
+.edit:active {
+    transform: scale(0.95);
+}
+
+.activate {
+    border: 1px solid #ff385c;
+    background-image: radial-gradient( circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100% );
+    cursor: pointer;
+}
+
+.deactivate {
+    border: none;
+    background-image: radial-gradient( circle at center, #faf0fa 0%, #e6dceb 27.5%, #e3dcdc 40%, #d7d2e6 57.5%, #bdc8dc 75%, #bdc8c8 100% );
+    cursor: not-allowed;
+}
+
+.loading-dot {
+    position: relative;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 100%;
+    background-color: var(--theme-color);
+    color: var(--theme-color);
+    animation: loading-dot 1s infinite linear alternate;
+    animation-delay: 0.5s;
+}
+
+.loading-dot::before, .loading-dot::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 100%;
+    background-color: var(--theme-color);
+    color: var(--theme-color);
+    animation: loading-dot 1s infinite alternate;
+}
+
+.loading-dot::before {
+    left: -15px;
+    animation-delay: 0s;
+}
+
+.loading-dot::after {
+    left: 15px;
+    animation-delay: 1s;
+}
+
+@keyframes loading-dot {
+    0% {
+        background-color: #ff385c;
+    }
+
+    50%, 100% {
+        background-color: #ff385c40;
+    }
+}
+
+/* delete confirmation modal */
+
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    place-items: center;
+    place-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 1;
+}
+
+.modal {
+    width: 42%;
+    max-width: 36rem;
+    min-height: 42%;
+    height: max-content;
+    max-height: 84%;
+    border: 1px solid #f0f0f0;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: 0.2s cubic-bezier(0.2, 0, 0, 1);
+    background: #ffffff;
+    overflow: auto;
+}
+
+.modal > header {
+    width: 100%;
+    height: 4rem;
+    color: #222222;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0 1.5rem;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+.icon-button {
+    padding: 0.4rem 0.5rem;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    background: #ffffff;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.icon-button > img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.icon-button:hover {
+    background: #f5f5f5;
+}
+
+.modal > header > span {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.modal > .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    gap: 1rem 0;
+    padding: 1rem 2rem;
+}
+
+.modal > .content > span {
+    color: #222222;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.content > span > strong {
+    font-weight: 600;
+}
+
+.confirmation-buttons {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    padding: 1.5rem 2rem;
+}
+
+/* footer starts here */
+
+#footer {
+    width: 100%;
+    position: sticky;
+    z-index: 99;
+    bottom: 0;
+    background: #ffffff;
+    padding: 0.25rem 2.5rem;
+    border-top: 1px solid #e4e4e4;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+.footer-links, .footer-links > a, .dot {
+    color: #333333;
+    font-size: 0.92rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.footer-links > a:hover {
+    color: #222222;
+    text-decoration: underline;
+}
+
+.dot {
+    margin: 0 0.5rem;
+}
+
+.support > a {
+    font-weight: 500;
+    margin: 0 0.5rem;
+}
+
+/* sticky button footer */
+
+#sticky-airbnb-setup {
+    display: none;
+    width: 100%;
+    position: sticky;
+    z-index: 99;
+    bottom: 0;
+    background: white;
+    padding: 0.75rem;
+    box-shadow: 0 0.5rem 1rem #000000bf;
+    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+#sticky-airbnb-setup > div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    gap: 0.5rem 0;
+}
+
+#sticky-airbnb-setup > div > span {
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+#sticky-airbnb-setup > div > button {
+    max-width: 96%;
+}
+
+/* media query for responsiveness */
+
+@media only screen and (min-width: 2000px) {
+    #rooms {
+        grid-template-columns: repeat(auto-fill, minmax(60rem, auto));
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    main, footer {
+        padding: 0 5rem;
+    }
+
+    #rooms {
+        grid-template-columns: repeat(auto-fill, minmax(60rem, auto));
+    }
+}
+
+@media only screen and (max-width: 1268px) {
+    #rooms {
+        grid-template-columns: repeat(auto-fill, minmax(40rem, auto));
+    }
+
+    .host-room-information {
+        gap: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #welcome-box {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .room-preview {
+        width: 26rem;
+        aspect-ratio: 41 / 40;
+    }
+
+    .room-preview > a > img {
+        aspect-ratio: 41 / 40;
+    }
+
+    .update-hide-delete-box {
+        gap: 0 5rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #welcome-box {
+        grid-template-columns: 1fr;
+        gap: 2.5rem 0;
+    }
+
+    #welcome-box > div > img {
+        width: 80%;
+    }
+
+    .room-preview {
+        width: 28rem;
+        aspect-ratio: 41 / 40;
+    }
+
+    .room-preview > a > img {
+        aspect-ratio: 41 / 40;
+    }
+
+    #footer {
+        padding: 0.5rem 0;
+        flex-direction: column-reverse;
+    }
+}
+
+@media only screen and (max-width: 888px) {
+    .room-preview {
+        width: 30rem;
+        aspect-ratio: 41 / 40;
+    }
+
+    .room-preview > a > img {
+        aspect-ratio: 41 / 40;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        grid-template-columns: auto 1fr;
+    }
+
+    .dashboard {
+        place-content: flex-end;
+    }
+
+    nav > div:last-child {
+        display: none;
+    }
+
+    main, footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #welcome-box > div > h2 {
+        font-size: 1.5rem;
+    }
+
+    #welcome-box > div > p {
+        font-size: 0.92rem;
+    }
+
+    #rooms {
+        grid-template-columns: repeat(auto-fill, minmax(24rem, auto));
+    }
+
+    .room-information {
+        flex-direction: column;
+        place-items: center;
+    }
+
+    .room-preview {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .room-preview > a > img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .update-hide-delete-box {
+        gap: 0 1.5rem;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    #sticky-airbnb-setup {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #welcome-box > div > h2 {
+        font-size: 1.25rem;
+    }
+
+    #welcome-box > div > p {
+        font-size: 0.75rem;
+    }
+
+    .update-hide-delete-box {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

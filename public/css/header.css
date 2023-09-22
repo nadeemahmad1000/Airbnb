@@ -1,0 +1,258 @@
+header {
+    width: 100%;
+    height: 5rem;
+    padding: 0 2.5rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    border-bottom: 1px solid #e4e4e4;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 99;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+}
+
+nav > div {
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+#logo-box {
+    padding-right: 12rem;
+}
+
+#search-bar {
+    width: 80%;
+    max-width: 24rem;
+    height: 3rem;
+    border: 1px solid #dddddd;
+    border-radius: 5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: 0.2s cubic-bezier(0.2, 0, 0, 1);
+    display: flex;
+    place-items: center;
+    place-content: center;
+    cursor: pointer;
+}
+
+#search-bar:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+#search {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border: none;
+    border-radius: 5rem;
+    outline: none;
+    padding: 0 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #222222;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#search::placeholder {
+    color: #717171;
+}
+
+.search-icon {
+    padding: 0.375rem 0.69rem;
+    background: var(--theme-color);
+    border: none;
+    border-radius: 100%;
+    margin: 0 0.5rem;
+}
+
+.search-icon > img {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.hosts-link {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 5rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #222222;
+    background: #ffffff;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.hosts-link:hover {
+    background: #f5f5f5;
+}
+
+.globe {
+    padding: 0.66rem 0.72rem;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    background: transparent;
+    display: flex;
+    place-items: center;
+}
+
+.globe > img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.globe:hover {
+    background: #f5f5f5;
+}
+
+#profile {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #dddddd;
+    border-radius: 5rem;
+    color: #222222;
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    place-items: center;
+    margin-left: 1rem;
+}
+
+#profile:hover, #profile:focus, #profile:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.fa-bars {
+    color: #444444;
+    font-size: 0.875rem;
+    margin-right: 0.375rem;
+}
+
+.bars {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+}
+
+.user {
+    width: 1.875rem;
+    height: 1.875rem;
+    margin-left: 0.25rem;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    width: 15rem;
+    position: absolute;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    left: auto;
+    right: 0;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    border: 1px solid #f0f0f0;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.wide {
+    width: 17rem;
+}
+
+.hide {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.dropdown-menu > a {
+    color: #222222;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.625rem 1rem;
+}
+
+.dropdown-menu > a:hover {
+    background: #f4f4f4
+}
+
+.dropdown-divider {
+    border-top: 1px solid #dddddd;
+    margin: 0.5rem 0;
+}
+
+.dropdown-menu > .bold {
+    font-weight: 500;
+}
+
+.dropdown-menu > a > .profile {
+    font-weight: 500;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+.dropdown-menu > a > .profile > img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+}
+
+/* media query for responsiveness */
+
+@media only screen and (min-width: 1600px) {
+    header {
+        padding: 0 5rem;
+    }
+}
+
+@media only screen and (max-width: 1268px) {
+    #logo-box {
+        padding-right: 6rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #logo-box {
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    #search-bar {
+        width: 92%;
+    }
+
+    #profile-box {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #search-bar {
+        width: 96%;
+    }
+}

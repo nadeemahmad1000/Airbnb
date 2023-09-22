@@ -1,0 +1,806 @@
+header, main, footer {
+    padding: 0 5rem;
+}
+
+body {
+    max-width: 100rem;
+}
+
+.room-type-and-location {
+    width: 100%;
+    padding: 1.5rem 0;
+}
+
+.room-type > h1 {
+    font-size: 1.625rem;
+    font-weight: 600;
+}
+
+#room-overview {
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+#room-overview > div {
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.dot {
+    margin: 0 0.5rem;
+}
+
+.room-rating {
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.room-rating > img {
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-right: 0.25rem;
+}
+
+.review-count, .room-reviews, .room-location {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#share, #save {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: underline;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    background: transparent;
+    padding: 0.5rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1), transform 0.1s cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+}
+
+#share {
+    margin-right: 0.5rem;
+}
+
+#share:hover, #save:hover {
+    background: #f5f5f5;
+}
+
+#share > img, #save > img {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+}
+
+#room-images {
+    width: 100%;
+    border-radius: 0.75rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    gap: 0.5rem;
+}
+
+.first-column, .second-column, .third-column {
+    height: 100%;
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.first-column {
+    width: 50%;
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+}
+
+.second-column, .third-column {
+    width: 25%;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.third-column {
+    border-top-right-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+}
+
+#room-images > div > img {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+#room-images > div > img:hover {
+    filter: brightness(0.8);
+}
+
+#image-1 {
+    height: 100%;
+    border-top-left-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+}
+
+#image-2, #image-3, #image-4, #image-5 {
+    height: 50%;
+}
+
+#image-4 {
+    border-top-right-radius: 0.75rem;
+}
+
+#image-5 {
+    border-bottom-right-radius: 0.75rem;
+}
+
+#room-details-price-reviews {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    padding: 3rem 0;
+}
+
+#room-details {
+    width: 60%;
+}
+
+#room-details-title {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    padding-bottom: 1.5rem;
+}
+
+#room-details-title > img {
+    width: 3rem;
+    height: 3rem;
+}
+
+#room-details-title > div {
+    display: flex;
+    flex-direction: column;
+    place-items: flex-start;
+    place-content: center;
+}
+
+#room-details-title > div > h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+#room-details-title > div > div {
+    margin-top: 0.25rem;
+}
+
+.info {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.less-gap-dot {
+    margin: 0 0.25rem;
+}
+
+#highlights {
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: flex-start;
+    gap: 2rem 0;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+}
+
+#highlights > div {
+    width: 100%;
+    display: flex;
+    place-items: flex-start;
+    place-content: flex-start;
+}
+
+#highlights > div > div > img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.125rem;
+    margin-right: 1rem;
+}
+
+#highlights > div > div > h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+#highlights > div > div > span {
+    color: #838383;
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+}
+
+.about-the-place {
+    max-width: 100%;
+    padding: 3rem 0;
+}
+
+.about-the-place > h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+.about-the-place > p {
+    padding: 1.5rem 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+}
+
+.about-the-place > span {
+    width: max-content;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: underline;
+    display: flex;
+    place-items: baseline;
+    cursor: pointer;
+}
+
+.about-the-place > span > img {
+    width: 0.69rem;
+    height: 0.69rem;
+    margin-left: 0.25rem;
+}
+
+#what-this-place-offers {
+    padding-top: 3rem;
+    border-top: 1px solid #dddddd;
+}
+
+#what-this-place-offers > h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+#facilities {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0;
+    margin: 3rem 0;
+}
+
+.facility-name {
+    width: 100%;
+    display: flex;
+    place-items: flex-start;
+    place-content: flex-start;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.facility-name > img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+#what-this-place-offers > button {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border: 1px solid #222222;
+    border-radius: 0.5rem;
+    background: transparent;
+    transition: 0.2s all;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#what-this-place-offers > button:hover {
+    background: #f5f5f5;
+}
+
+#what-this-place-offers > button:active {
+    transform: scale(0.95);
+}
+
+#price-breakdown-section {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    place-items: flex-start;
+    place-content: flex-end;
+}
+
+#price-card {
+    width: 80%;
+    border: 1px solid #dddddd;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 0.375rem 1rem;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 6rem;
+    z-index: 9;
+}
+
+#price-card-title {
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+#price-per-night {
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    place-items: baseline;
+    place-content: center;
+}
+
+#price-per-night > span {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+#rating-reviews {
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+#rating-reviews > span > img {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 0.125rem;
+}
+
+.review-count-2 {
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+#checkin-checkout-guest-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+}
+
+#checkin-checkout-guest-info > div {
+    width: 100%;
+    display: flex;
+    place-items: center;
+}
+
+#checkin-checkout-guest-info > div > input {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 1.25rem;
+    outline: none;
+}
+
+.check-in-date {
+    width: 100%;
+    border: 1px solid #c8c8c8;
+    border-top-left-radius: 0.75rem;
+    border-right: none;
+    border-bottom: none;
+    padding: 0.5rem;
+}
+
+.check-out-date {
+    width: 100%;
+    border: 1px solid #c8c8c8;
+    border-top-right-radius: 0.75rem;
+    border-bottom: none;
+    padding: 0.5rem;
+}
+
+.check-in-date > span, .check-out-date > span {
+    color: #444444;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding-left: 0.5rem;
+}
+
+.check-in-date > input, .check-out-date > input {
+    color: #333333;
+    font-size: 0.92rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    outline: none;
+}
+
+#guests-info {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    padding: 1.25rem;
+    border: 1px solid #c8c8c8;
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+}
+
+#guests-info > span {
+    color: #505050;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.less-button, .more-button {
+    padding: 0.375rem 0.5rem;
+    border: 1px solid #dddddd;
+    border-radius: 100%;
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: 0.2s all;
+}
+
+.less-button > img, .more-button > img {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.less-button:active, .more-button:active {
+    transform: scale(0.95);
+}
+
+.count {
+    margin: 0 1rem;
+}
+
+#reserve {
+    width: 100%;
+    height: 3.125rem;
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 0.75rem 0;
+    margin: 1rem 0;
+    border: 1px solid #ff385c;
+    border-radius: 0.5rem;
+    background-image: radial-gradient( circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100% );
+    cursor: pointer;
+    transition: 0.2s all;
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+#reserve:hover {
+    filter: brightness(0.88);
+}
+
+#reserve:active {
+    transform: scale(0.95);
+}
+
+.loading-dot {
+    position: relative;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 100%;
+    background-color: var(--theme-color);
+    color: var(--theme-color);
+    animation: loading-dot 1s infinite linear alternate;
+    animation-delay: 0.5s;
+}
+
+.loading-dot::before, .loading-dot::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 100%;
+    background-color: var(--theme-color);
+    color: var(--theme-color);
+    animation: loading-dot 1s infinite alternate;
+}
+
+.loading-dot::before {
+    left: -15px;
+    animation-delay: 0s;
+}
+
+.loading-dot::after {
+    left: 15px;
+    animation-delay: 1s;
+}
+
+@keyframes loading-dot {
+    0% {
+        background-color: #ff385c;
+    }
+
+    50%, 100% {
+        background-color: #ff385c40;
+    }
+}
+
+#pricing-statement {
+    width: 100%;
+    font-size: 0.88rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.charges {
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.service {
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.fee {
+    font-size: 0.95rem;
+}
+
+#total-charge {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    border-top: 1px solid #dddddd;
+}
+
+.total, .charge {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.guest-reviews {
+    padding: 3rem 0;
+    border-top: 1px solid #dddddd;
+}
+
+.guest-reviews-title {
+    width: max-content;
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.guest-reviews-title > img {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+}
+
+.guest-reviews-title > span {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+.score {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 5rem;
+    margin: 3rem 0;
+}
+
+.score > div {
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    padding-right: 5rem;
+}
+
+.score > div > span {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.guest-reviews-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 5rem;
+    place-items: flex-start;
+}
+
+.guest-reviews-content > div {
+    display: flex;
+    flex-direction: column;
+    place-items: flex-start;
+    place-content: center;
+    padding-right: 5rem;
+}
+
+.guest-reviews-content > div > div {
+    display: flex;
+    place-items: center;
+    place-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.guest-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 100%;
+    margin-right: 1rem;
+}
+
+.guest-and-date {
+    display: flex;
+    flex-direction: column;
+    place-items: flex-start;
+    place-content: center;
+}
+
+.guest-name {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+
+.visit-date {
+    color: #717171;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.review-description {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: start;
+}
+
+.guest-reviews > button {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border: 1px solid #222222;
+    border-radius: 0.5rem;
+    background: transparent;
+    transition: 0.2s all;
+    margin-top: 2.5rem;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.guest-reviews > button:hover {
+    background: #f5f5f5;
+}
+
+.guest-reviews > button:active {
+    transform: scale(0.95);
+}
+
+.things-to-know {
+    padding: 3rem 0;
+    border-top: 1px solid #dddddd;
+}
+
+.things-to-know > h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+}
+
+.things-to-know > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 1.5rem;
+}
+
+.things-to-know > div > div {
+    display: flex;
+    flex-direction: column;
+    place-items: flex-start;
+    place-content: flex-start;
+    gap: 1rem 0;
+}
+
+.things-to-know > div > div > h3 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+}
+
+.things-to-know > div > div > p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+/* media query for responsiveness */
+
+@media only screen and (max-width: 1200px) {
+    header, main {
+        padding: 0 2.5rem;
+    }
+
+    #price-card {
+        width: 88%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #room-details-price-reviews {
+        flex-direction: column;
+    }
+
+    #what-this-place-offers {
+        padding-bottom: 3rem;
+        border-bottom: 1px solid #dddddd;
+    }
+
+    #room-details, #price-breakdown-section {
+        width: 100%;
+    }
+
+    #price-breakdown-section {
+        padding-top: 3rem;
+        place-items: center;
+        place-content: center;
+    }
+
+    #price-card {
+        width: 60%;
+    }
+
+    .guest-reviews-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header, main {
+        padding: 0 1.5rem;
+    }
+
+    #price-card {
+        width: 75%;
+    }
+
+    .things-to-know > div {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+    }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Host your room on Airbnb • Airbnb </title>
+
+    <link rel="shortcut icon" href="../public/images/airbnb_small.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/host.css">
+    <link rel="stylesheet" href="../public/css/table.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
+
+    <% if (user === null) { %>
+        <link rel="stylesheet" href="../public/css/modal.css">
+    <% } %>
+
+    <script src="https://kit.fontawesome.com/7748f3a2f4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo-box">
+                <a href="/">
+                    <img src="../public/images/airbnb_large.svg" alt="Airbnb" title="Airbnb">
+                </a>
+            </div>
+
+            <div class="host-button-box">
+                <span> Ready to Airbnb it? </span>
+                <a href="<%= ((user === null) ? (`javascript:void(0)`) : (`/host/dashboard`)) %>" class="<%= ((user === null) ? (`show-modal`) : (``)) %>">
+                    <button type="button" class="host-button">
+                        <img src="../public/images/add_room.svg" alt="Host your home" title="Host your home">
+                        Airbnb Setup
+                    </button>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <% if (user === null) { %>
+        <%- include('./partials/modal') %>
+    <% } %>
+
+    <main>
+        <div id="airbnb-setup">
+            <div id="airbnb-earning">
+                <span id="airbnb-it"> Airbnb it. </span>
+                <span id="you-could-earn"> You could earn </span>
+                <span id="room-cost"> &#8377; 13,769 </span>
+            </div>
+
+            <div>
+                <img src="../public/images/owner.jpg" alt="host your room">
+            </div>
+        </div>
+
+        <div id="airbnb-hosts">
+            <h2> Airbnb it easily with Airbnb Setup </h2>
+            <img src="../public/images/hosts_small.webp" alt="Hosts" title="Hosts" id="hosts-image">
+
+            <div id="airbnb-facilities">
+                <div>
+                    <h3> One-to-one guidance from a Superhost </h3>
+                    <p> We'll match you with a Superhost in your area, who'll guide you from your first question to your first guest - by phone, video call or chat. </p>
+                </div>
+                <div>
+                    <h3> An experienced guest for your first booking </h3>
+                    <p> For your first booking, you can choose to welcome an experienced guest who has at least three stays and a good track record on Airbnb. </p>
+                </div>
+                <div>
+                    <h3> Specialised support from Airbnb </h3>
+                    <p> New Hosts get one-tap access to specially trained Community Support agents who can help with everything from account issues to billing support. </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="aircover">
+            <img src="../public/images/aircover.webp" alt="Aircover" title="Aircover">
+            <h1> Airbnb it with top-to-bottom protection </h1>
+
+            <table> <%- include('./partials/comparison_table') %> </table>
+
+            <div class="comparison-details">
+                Comparison is based on public information and free offerings by top competitors as of 22/10. Find details and exclusions <a href="javascript:void(0)"> here </a>
+            </div>
+
+            <button type="button" id="learn-more"> Learn more </button>
+        </div>
+    </main>
+
+    <% if (user !== null) { %>
+        <section class="snackbar">
+            <button type="button" style="visibility: hidden;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                    <path d="m6 6 20 20M26 6 6 26"></path>
+                </svg>
+            </button>
+
+            <span> Welcome to Airbnb, <%= user.name %> </span>
+
+            <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                    <path d="m6 6 20 20M26 6 6 26"></path>
+                </svg>
+            </button>
+        </section>
+    <% } %>
+
+    <footer> <%- include('./partials/footer') %> </footer>
+
+    <footer id="sticky-airbnb-setup">
+        <div class="host-button-box">
+            <span> Ready to Airbnb it? </span>
+            <button type="button" class="host-button">
+                <img src="../public/images/add_room.svg" alt="Host your home" title="Host your home">
+                Airbnb Setup
+            </button>
+        </div>
+    </footer>
+
+    <script src="../public/javascript/host.js"></script>
+
+    <% if (user === null) { %>
+        <script src="../public/javascript/modal.js"></script>
+    <% } %>
+</body>
+</html>

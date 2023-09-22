@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Airbnb Host Dashboard • Airbnb </title>
+
+    <link rel="shortcut icon" href="../public/images/airbnb_small.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/room_box.css">
+    <link rel="stylesheet" href="../public/css/dashboard.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
+
+    <script src="https://kit.fontawesome.com/7748f3a2f4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="logo-box">
+                <a href="/host">
+                    <img src="../public/images/airbnb_black.svg" alt="Airbnb" title="Airbnb">
+                </a>
+                <h2> host </h2>
+            </div>
+
+            <div class="dashboard">
+                <h2> Dashboard </h2>
+            </div>
+
+            <div class="add-new-room-button-box">
+                <span> Ready to Airbnb it? </span>
+                <a href="/host/rooms/add" target="_blank">
+                    <button type="button" class="add-new-room-button">
+                        <img src="../public/images/add_room.svg" alt="Host your home" title="Host your home">
+                        Add new room
+                    </button>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <% if (rooms.length === 0) { %>
+            <div id="welcome-box">
+                <div>
+                    <h2> Welcome host, <%= user.name %> </h2>
+                    <p> Host your rooms on Airbnb & start earning </p>
+                    <a href="/host/rooms/add" target="_blank">
+                        <button type="button" class="add-new-room-button">
+                            <img src="../public/images/add_room.svg" alt="Host your home" title="Host your home">
+                            Add new room
+                        </button>
+                    </a>
+                </div>
+                <div>
+                    <img src="../public/images/owner.jpg" alt="host you room">
+                </div>
+            </div>
+        <% } else { %>
+            <div id="dashboard">
+                <div class="welcome-host">
+                    <h2> Welcome to host dashboard, <%= user.name %> </h2>
+                    <span>
+                        You can
+                        <strong> view </strong>, <strong> add </strong>, <strong> update </strong>, <strong> hide </strong> or <strong> delete </strong> your hosted room(s) here, as per your convenience.
+                    </span>
+                </div>
+
+                <div id="rooms">
+                    <% for (const room of rooms) { %>
+                        <% const rating = Number.parseFloat(room.rating); %>
+
+                        <% let loved = '', blur = ''; %>
+
+                        <% if (user.wishlist.includes(room.roomId)) { %>
+                            <% loved = 'loved'; %>
+                        <% } %>
+
+                        <% blur = ((room.hidden === true) ? 'blur' : ''); %>
+
+                        <div class="room">
+                            <div class="room-information <%= blur %>">
+                                <div class="room-preview">
+                                    <% if (rating === 0) { %>
+                                        <div class="ribbon">
+                                            <span> New </span>
+                                        </div>
+                                    <% } %>
+
+                                    <a href="/rooms/<%= room.roomId %>" target="_blank">
+                                        <% for (const source of room.images) { %>
+                                            <img src="<%= source %>" alt="room-image" class="room-image">
+                                        <% } %>
+                                    </a>
+
+                                    <button type="button" id="toggle-wishlist">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" class="wishlist <%= loved %>">
+                                            <path
+                                                d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z">
+                                            </path>
+                                        </svg>
+                                    </button>
+
+                                    <button type="button" class="left-caret">
+                                        <img src="../public/images/left_caret.svg" alt="left">
+                                    </button>
+
+                                    <button type="button" class="right-caret">
+                                        <img src="../public/images/right_caret.svg" alt="right">
+                                    </button>
+                                </div>
+
+                                <div class="host-room-information">
+                                    <div class="room-id-and-type">
+                                        <span class="bold">
+                                            RoomID:
+                                            <a href="/rooms/<%= room.roomId %>" class="room-id">
+                                                <%= room.roomId %>
+                                            </a>
+                                        </span>
+
+                                        <span class="bold">
+                                            Room Type:
+                                            <span class="room-type">
+                                                <%= room.roomType %>
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="room-title-and-desc">
+                                        <div class="room-title">
+                                            <%= room.title %>
+                                        </div>
+                                        <div class="room-description">
+                                            <%= room.description %>
+                                        </div>
+                                    </div>
+
+                                    <div class="room-location">
+                                        <span class="bold">
+                                            Located at:
+                                            <span>
+                                                <%= room.location.city %>,
+                                                <%= room.location.state %>,
+                                                <%= room.location.country %>
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="availability">
+                                        <span class="bold">
+                                            Available From:
+
+                                            <% const roomAvailableFrom = room.availableFrom.toString(); %>
+
+                                            <span>
+                                                <%= roomAvailableFrom.slice(8, 10) %>
+                                                <%= roomAvailableFrom.slice(4, 7) %>
+                                            </span>
+                                        </span>
+                                        <span class="bold">
+                                            Available Upto:
+
+                                            <% const roomAvailableUpto = room.availableUpto.toString(); %>
+
+                                            <span>
+                                                <%= roomAvailableUpto.slice(8, 10) %>
+                                                <%= roomAvailableUpto.slice(4, 7) %>
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="price-and-discount">
+                                        <span class="bold">
+                                            Price:
+                                            <span class="room-price">
+                                                &#8377; <%= room.price %> night
+                                            </span>
+                                        </span>
+                                        <span class="bold">
+                                            Discount:
+                                            <span class="room-discount">
+                                                <%= room.discount %> %
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="update-hide-delete-box">
+                                <a href="/host/rooms/update/<%= room.roomId %>" target="_blank">
+                                    <button type="button" class="edit update-room">
+                                        <i class="fa-solid fa-pen-to-square">
+                                        </i>
+                                        Update
+                                    </button>
+                                </a>
+                                <button type="button" class="edit visible-room room-visibility">
+                                    <% if (room.hidden === true) { %>
+                                        <i class="fa-solid fa-eye"></i> Show
+                                    <% } else { %>
+                                        <i class="fa-solid fa-eye-slash"></i>
+                                        Hide
+                                    <% } %>
+                                </button>
+                                <button type="button" class="edit delete-room">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+    </main>
+
+    <section class="modal-overlay hide">
+        <div class="modal">
+            <header>
+                <button type="button" class="icon-button" id="close">
+                    <img src="../public/images/close.svg" alt="close" title="close">
+                </button>
+                <span> Delete room from Airbnb </span>
+                <button type="button" class="icon-button invisible">
+                    <img src="../public/images/close.svg" alt="close" title="close">
+                </button>
+            </header>
+
+            <div class="content">
+                <span>
+                    Are you sure you want to <strong> delete </strong> your
+                    <strong id="modal-room-type"></strong>,
+                    '<strong id="modal-room-title"></strong>' with roomID
+                    <strong id="modal-room-id"></strong> from Airbnb ?
+                </span>
+
+                <span id="modal-advice"></span>
+            </div>
+
+            <div class="confirmation-buttons">
+                <button type="button" class="edit delete-room" id="confirm-delete-room">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="snackbar">
+        <button type="button" style="visibility: hidden;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                <path d="m6 6 20 20M26 6 6 26"></path>
+            </svg>
+        </button>
+
+        <span></span>
+
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                <path d="m6 6 20 20M26 6 6 26"></path>
+            </svg>
+        </button>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-links">
+            &copy; <span id="year">
+                &nbsp; <%= new Date().getUTCFullYear() %> &nbsp;
+            </span> Airbnb, Inc.
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Privacy </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Terms </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Sitemap </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Company details </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Destinations </a>
+        </div>
+
+        <div class="footer-links support">
+            <button type="button" class="globe">
+                <img src="../public/images/globe.svg" alt="globe" title="globe">
+            </button>
+            <a href="javascript:void(0)"> English (IN) </a>
+            <a href="javascript:void(0)"> &#8377; INR </a>
+            <a href="javascript:void(0)"> Support & Resources </a>
+        </div>
+    </footer>
+
+    <footer id="sticky-airbnb-setup">
+        <div>
+            <span> Ready to Airbnb it? </span>
+            <a href="/host/rooms/add" target="_blank">
+                <button type="button" class="add-new-room-button">
+                    <img src="../public/images/add_room.svg" alt="Host your home" title="Host your home">
+                    Add new room
+                </button>
+            </a>
+        </div>
+    </footer>
+
+    <script src="../public/javascript/dashboard.js"></script>
+    <script src="../public/javascript/room_box.js"></script>
+</body>
+</html>

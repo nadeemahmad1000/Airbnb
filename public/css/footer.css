@@ -1,0 +1,126 @@
+footer {
+    width: 100%;
+    background: #f7f7f7;
+    border-top: 1px solid #dddddd;
+}
+
+.footer-upper-links {
+    width: 100%;
+    padding: 3rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.footer-upper-links > div > div > h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer-upper-links > div > div > a {
+    width: max-content;
+    font-size: 0.92rem;
+    font-weight: 400;
+    display: flex;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.footer-upper-links > div > div > a:hover {
+    text-decoration: underline;
+}
+
+.footer-lower-links {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    padding: 1.5rem 0;
+}
+
+.footer-lower-links > div {
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.footer-lower-links > div > a {
+    font-size: 0.92rem;
+    text-decoration: none;
+}
+
+.footer-lower-links > div > a:hover {
+    text-decoration: underline;
+}
+
+.footer-lower-links > div:last-child > a {
+    font-weight: 0.92rem;
+    font-weight: 500;
+}
+
+.dot {
+    margin: 0 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    place-items: center;
+    place-content: center;
+    gap: 0 1rem;
+    margin-left: 1rem;
+}
+
+.social-links > img {
+    width: 1.125rem;
+    height: 1.125rem;
+    cursor: pointer;
+}
+
+/* media query for responsiveness */
+
+@media only screen and (max-width: 1200px) {
+    footer {
+        padding: 0 2.5rem;
+    }
+
+    #price-card {
+        width: 88%;
+    }
+
+    .footer-upper-links {
+        padding: 0;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footer-upper-links > div {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .footer-upper-links > div:last-child {
+        border-bottom: none;
+    }
+
+    .footer-upper-links > div > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .footer-lower-links {
+        flex-direction: column-reverse;
+        gap: 0.5rem 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    footer {
+        padding: 0 1.5rem;
+    }
+
+    .footer-upper-links > div > div {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

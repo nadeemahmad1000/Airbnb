@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= room.title %> • Airbnb </title>
+
+    <link rel="shortcut icon" href="../public/images/airbnb_small.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/room.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
+
+    <% if (user === null) { %>
+        <link rel="stylesheet" href="../public/css/modal.css">
+    <% } %>
+
+    <script src="https://kit.fontawesome.com/7748f3a2f4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo-box">
+                <a href="/">
+                    <img src="../public/images/airbnb_large.svg" alt="Airbnb" title="Airbnb">
+                </a>
+            </div>
+
+            <div id="search-box">
+                <div id="search-bar">
+                    <input type="text" name="search" id="search" placeholder="Start your search" title="Search rooms here" autofocus required readonly>
+                    <div class="search-icon">
+                        <img src="../public/images/search.svg" alt="search" title="search">
+                    </div>
+                </div>
+            </div>
+
+            <div id="profile-box">
+                <a href="/host">
+                    <button type="button" class="hosts-link">
+                        <% if (user === null) { %>
+                            Airbnb your home
+                        <% } else { %>
+                            Switch to hosting
+                        <% } %>
+                    </button>
+                </a>
+                <button type="button" class="globe">
+                    <img src="../public/images/globe.svg" alt="globe" title="globe">
+                </button>
+                <div class="dropdown">
+                    <button type="button" class="show-menu" id="profile">
+                        <img src="../public/images/bars.svg" alt="bars" class="bars show-menu">
+                        <img src="../public/images/avatar.svg" alt="user" title="user" class="user show-menu">
+                    </button>
+
+                    <% if (user === null) { %>
+                        <%- include('./partials/login_dropdown') %>
+                    <% } else { %>
+                        <%- include('./partials/profile_dropdown') %>
+                    <% } %>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <% if (user === null) { %>
+        <%- include('./partials/modal') %>
+
+        <% const firstName = user.name.split(' ')[0]; %>
+    <% } %>
+
+    <% const showModal = (user === null ? 'show-modal' : null); %>
+    <% const rating = Number.parseFloat(room.rating); %>
+
+    <main>
+        <div class="room-type-and-location">
+            <!-- room-type -->
+            <div class="room-type">
+                <h1> <%= room.title %> </h1>
+            </div>
+
+            <!-- room-rating, review-count & room-location -->
+            <div id="room-overview">
+                <div>
+                    <span class="room-rating">
+                        <img src="../public/images/star.svg" alt="rating" title="rating">
+                        <% if (rating > 0) { %>
+                            <%= rating %>
+                        <% } else { %>
+                            No reviews yet
+                        <% } %>
+                    </span>
+                    <% if (rating > 0) { %>
+                        <span class="dot"> • </span>
+                        <span class="room-reviews"> 60reviews </span>
+                    <% } %>
+                    <span class="dot"> • </span>
+                    <span class="room-location">
+                        <%= room.location.city %>,
+                        <%= room.location.state %>,
+                        <%= room.location.country %>
+                    </span>
+                </div>
+
+                <!-- share & save button -->
+                <div>
+                    <button type="button" id="share">
+                        <img src="../public/images/share.svg" alt="share" title="share">
+                        Share
+                    </button>
+                    <button type="button" id="save">
+                        <img src="../public/images/heart.svg" alt="save" title="save">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- room-images for preview -->
+        <div id="room-images">
+            <div class="first-column">
+                <img src="<%= room.images[0] %>" alt="room-image-1" id="image-1">
+            </div>
+            <div class="second-column">
+                <img src="<%= room.images[1] %>" alt="room-image-2" id="image-2">
+                <img src="<%= room.images[2] %>" alt="room-image-3" id="image-3">
+            </div>
+            <div class="third-column">
+                <img src="<%= room.images[3] %>" alt="room-image-4" id="image-4">
+                <img src="<%= room.images[4] %>" alt="room-image-5" id="image-5">
+            </div>
+        </div>
+
+        <div id="room-details-price-reviews">
+            <!-- details about the room goes here -->
+            <div id="room-details">
+                <div id="room-details-title">
+                    <div>
+                        <!-- owner-name -->
+                        <h2>
+                            <% if (room.placeType === 'An entire place') { %>
+                                Entire
+                            <% } else if (room.placeType === 'A room') { %>
+                                Room in a
+                            <% } else { %>
+                                Shared room in a
+                            <% } %>
+
+                            <%= room.roomType %> hosted by
+                            <%= room.ownerName %>
+                        </h2>
+
+                        <!-- guests, beds, bedrooms & bathrooms info -->
+                        <div>
+                            <span class="info">
+                                <%= room.basicInfo.guests %> guests
+                            </span>
+                            <span class="less-gap-dot"> • </span>
+                            <span class="info">
+                                <%= room.basicInfo.bedrooms %> bedrooms
+                            </span>
+                            <span class="less-gap-dot"> • </span>
+                            <span class="info">
+                                <%= room.basicInfo.beds %> beds
+                            </span>
+                            <span class="less-gap-dot"> • </span>
+                            <span class="info">
+                                <%= room.basicInfo.bathrooms %> bathrooms
+                            </span>
+                        </div>
+                    </div>
+                    <img src="../public/images/avatar.svg" alt="owner" title="">
+                </div>
+
+                <!-- highlighted points about the room & the owner -->
+                <div id="highlights">
+                    <div id="highlight-1">
+                        <div>
+                            <img src="../public/images/paws.svg" alt="pet" title="pet">
+                        </div>
+                        <div>
+                            <h3> Furry friends welcome </h3>
+                            <span> Bring your pets along for the stay </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="../public/images/superhost.svg" alt="superhost" title="superhost">
+                        </div>
+                        <div>
+                            <h3> <%= room.ownerName %> is a superhost </h3>
+                            <span> Superhosts are experienced, highly rated hosts who are committed to providing great stays for their guests. </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="../public/images/conversation.svg" alt="conversation" title="conversation">
+                        </div>
+                        <div>
+                            <h3> Great communication </h3>
+                            <span> 90% of recent guests rated <%= room.ownerName %> 5-star in communication. </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="../public/images/calendar.svg" alt="calendar" title="calendar">
+                        </div>
+                        <div>
+                            <h3>
+                                Free cancellation before 25 December 2023
+                                <span class="cancellation-date"></span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- detailed paragraph about the place & the room -->
+                <div class="about-the-place">
+                    <h2> About the place </h2>
+                    <p> <%= room.description %> </p>
+
+                    <span>
+                        Show more
+                        <img src="../public/images/right_caret_big.svg" alt="show more" title="show more">
+                    </span>
+                </div>
+
+                <!-- important facilities offered by the owner to guests -->
+                <div id="what-this-place-offers">
+                    <h2> What this place offers </h2>
+                    <div id="facilities">
+                        <div class="facility-name">
+                            <img src="../public/images/wifi.svg" alt="wifi" title="wifi">
+                            <% if (room.facilities.includes('wifi')) { %>
+                                Wifi
+                            <% } else { %>
+                                <s> Wifi </s>
+                            <% } %>
+                        </div>
+                        <div class="facility-name">
+                            <img src="../public/images/snow.svg" alt="Air conditioning" title="Air conditioning">
+                            <% if (room.facilities.includes('wifi')) { %>
+                                Air Conditioning
+                            <% } else { %>
+                                <s> Air Conditioning </s>
+                            <% } %>
+                        </div>
+                        <div class="facility-name">
+                            <% if (room.facilities.includes('kitchen')) { %>
+                                <img src="../public/images/kitchen.svg" alt="Kitchen" title="Kitchen">
+                                Kitchen
+                            <% } else { %>
+                                <img src="../public/images/no_kitchen.svg" alt="no kitchen" title="no kitchen">
+                                <s> Kitchen </s>
+                            <% } %>
+                        </div>
+                        <div class="facility-name">
+                            <img src="../public/images/tv.svg" alt="TV" title="TV">
+                            <% if (room.facilities.includes('tv')) { %>
+                                TV with standard cable/satellite
+                            <% } else { %>
+                                <s> TV with standard cable/satellite </s>
+                            <% } %>
+                        </div>
+                        <div class="facility-name">
+                            <img src="../public/images/garden.svg" alt="Garden" title="Garden">
+                            Private Back Garden
+                        </div>
+                        <div class="facility-name">
+                            <img src="../public/images/paws.svg" alt="pets" title="pets">
+                            Pets are allowed
+                        </div>
+                        <div class="facility-name">
+                            <% if (room.facilities.includes('washingMachine')) { %>
+                                <img src="../public/images/free_washing_machine.svg" alt="washing machine" title="Washing machine">
+                                Washing Machine
+                            <% } else { %>
+                                <img src="../public/images/no_washing_machine.svg" alt="no washing machine" title="no washing machine">
+                                <s> Washing Machine </s>
+                            <% } %>
+                        </div>
+                        <div class="facility-name">
+                            <img src="../public/images/alarm.svg" alt="Smoke alarm" title="Smoke alarm">
+                            <% if (room.security.includes('smokeAlarm')) { %>
+                                Smoke Alarm
+                            <% } else { %>
+                                <s> Smoke Alarm </s>
+                            <% } %>
+                        </div>
+                        <div class="facility-name">
+                            <img src="../public/images/luggage.svg" alt="Luggage" title="Luggage">
+                            Luggage drop off is allowed
+                        </div>
+                        <div class="facility-name">
+                            <img src="../public/images/car.svg" alt="Parking" title="Parking">
+                            <% if (room.facilities.includes('parking')) { %>
+                                Free parking on premises
+                            <% } else { %>
+                                <s> Free parking on premises </s>
+                            <% } %>
+                        </div>
+                    </div>
+                    <button type="button"> Show all 25 amenities </button>
+                </div>
+            </div>
+
+            <div id="price-breakdown-section">
+                <!-- price-card sticked to the right side of main -->
+                <div id="price-card">
+                    <div id="price-card-title">
+                        <div id="price-per-night">
+                            <span>
+                                &#8377;<%= room.price %>
+                            </span> &nbsp; night
+                        </div>
+                        <div id="rating-reviews">
+                            <span class="rating">
+                                <img src="../public/images/star.svg" alt="rating" title="rating">
+                                <% if (rating > 0) { %>
+                                    <%= rating %>
+                                <% } else { %>
+                                    No reviews yet
+                                <% } %>
+                            </span>
+                            <% if (rating > 0) { %>
+                                <span class="dot"> • </span>
+                                <span class="review-count-2">
+                                    60reviews
+                                </span>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <!-- check-in & check-out dates input -->
+
+                    <div id="checkin-checkout-guest-info">
+                        <div>
+                            <!-- check-in date input box -->
+                            <div class="check-in-date">
+                                <span> check-in date </span>
+                                <input type="date" name="checkIn" min="<%= room.availableFrom %>" max="<%= room.availableUpto %>">
+                            </div>
+
+                            <!-- check-out date input box -->
+                            <div class="check-out-date">
+                                <span> check-out date </span>
+                                <input type="date" name="checkOut" min="<%= room.availableFrom %>" max="<%= room.availableUpto %>">
+                            </div>
+                        </div>
+
+                        <!-- total guest input box -->
+                        <div id="guests-info">
+                            <span> Number of guests </span>
+
+                            <div>
+                                <button type="button" class="less-button">
+                                    <img src="../public/images/less.svg" alt="less" title="less">
+                                </button>
+                                <span class="count"> 1 </span>
+                                <button type="button" class="more-button">
+                                    <img src="../public/images/more.svg" alt="more" title="more">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- reserve room button -->
+                    <button type="button" class="<%= showModal %>" id="reserve">
+                        Reserve
+                    </button>
+
+                    <!-- pricing statement -->
+                    <div id="pricing-statement">
+                        You won't be charged yet
+                    </div>
+
+                    <!-- room service fee -->
+
+                    <div class="charges">
+                        <div class="service">
+                            &#8377; <%= room.price %>
+                            x
+                            <span class="day-count"></span>
+                        </div>
+                        <div class="fee" id="room-service-fee"></div>
+                    </div>
+
+                    <!-- cleaning & maintainance fee -->
+
+                    <div class="charges">
+                        <div class="service"> Cleaning fee </div>
+                        <div class="fee" id="cleaning-fee"></div>
+                    </div>
+
+                    <!-- airbnb service fee -->
+
+                    <div class="charges">
+                        <div class="service"> Airbnb service fee </div>
+                        <div class="fee" id="airbnb-service-fee"></div>
+                    </div>
+
+                    <!-- total cost of booking this room -->
+
+                    <div id="total-charge">
+                        <div class="total"> Total before taxes </div>
+                        <div class="charge"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% if (rating > 0) { %>
+            <div class="guest-reviews">
+                <div class="guest-reviews-title">
+                    <img src="../public/images/star.svg" alt="rating" title="rating">
+                    <span> <%= rating %> </span>
+                    <span class="dot"> • </span>
+                    <span> 60 reviews </span>
+                </div>
+
+                <div class="score-and-reviews">
+                    <div class="score">
+                        <div>
+                            <span> Cleanliness </span>
+                            <span> --- </span>
+                        </div>
+                        <div>
+                            <span> Accuracy </span>
+                            <span> --- </span>
+                        </div>
+                        <div>
+                            <span> Communication </span>
+                            <span> --- </span>
+                        </div>
+                        <div>
+                            <span> Location </span>
+                            <span> --- </span>
+                        </div>
+                        <div>
+                            <span> Check-in </span>
+                            <span> --- </span>
+                        </div>
+                        <div>
+                            <span> Value </span>
+                            <span> --- </span>
+                        </div>
+                    </div>
+
+                    <div class="guest-reviews-content">
+                        <div>
+                            <div>
+                                <img src="../public/images/default_user.png" alt="guest" title="guest" class="guest-avatar">
+                                <div class="guest-and-date">
+                                    <span class="guest-name"> Sweety </span>
+                                    <span class="visit-date">
+                                        August 2023 • Solo Trip
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="review-description">
+                                a very well maintained property, away from the hustle of the tourists yet not far. Anshu was very active in communication, stayed in touch with every bit of our requests and even accomodated our early check-in! special mention to Sabi and family who made us feel like home with their fantastic food. I would defenitely return and highly recommend this stay.
+                            </p>
+                        </div>
+                        <div>
+                            <div>
+                                <img src="../public/images/default_user.png" alt="guest" title="guest" class="guest-avatar">
+                                <div class="guest-and-date">
+                                    <span class="guest-name"> Priyanka </span>
+                                    <span class="visit-date">
+                                        May 2023 • Family Trip
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="review-description">
+                                Great place to stay with friends and family. Very responsive host and the care taker was available 24/7. Place for a peaceful vacation. Loved the garden part. It was large and my kid loved it. Food provided was good and served on time.
+                            </p>
+                        </div>
+                        <div>
+                            <div>
+                                <img src="../public/images/default_user.png" alt="guest" title="guest" class="guest-avatar">
+                                <div class="guest-and-date">
+                                    <span class="guest-name"> Suchi </span>
+                                    <span class="visit-date">
+                                        June 2023 • Family Trip
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="review-description">
+                                We went there a family of 4... It's a Huge property with Perfect location... Sabii took care for us each n every moment. Totally satisfied.. the place can accommodate approx 15 people. Prefect stay in <%= room.location.city %>
+                            </p>
+                        </div>
+                        <div>
+                            <div>
+                                <img src="../public/images/default_user.png" alt="guest" title="guest" class="guest-avatar">
+                                <div class="guest-and-date">
+                                    <span class="guest-name"> Soumya </span>
+                                    <span class="visit-date">
+                                        April 2023 • Family Trip
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="review-description">
+                                Too much hidden extra charges after we book the property, felt like all Mr. Anshu is looking to milk maximum money from you rather than taking care of customers. The care taker Mr. Sabi and his family is very good polite and helpful. Lacks maintenance in bathrooms struggled using toilets.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button"> Show all 60 reviews </button>
+            </div>
+        <% } %>
+
+        <div class="things-to-know">
+            <h2> Things to know </h2>
+
+            <div>
+                <div class="house-rules">
+                    <h3> House Rules </h3>
+                    <p> Check-in: 12:00 pm - 8:00 pm </p>
+                    <p> Checkout before 12:00 pm </p>
+                    <p> <%= room.basicInfo.guests %> guests maximum </p>
+                </div>
+                <div class="safety-and-property">
+                    <h3> Safety and Property </h3>
+                    <p>
+                        <%= room.security.includes('camera') ? '' : 'No' %>
+                        Security camera available
+                    </p>
+                    <p>
+                        <%= room.security.includes('smokeAlarm') ? '' : 'No' %>
+                        Smoke Alarm available
+                    </p>
+                    <p>
+                        <%= room.security.includes('fireExtinguisher') ? '' : 'No' %>
+                        Fire Extinguisher available
+                    </p>
+                </div>
+                <div class="cancellation-policy">
+                    <h3> Cancellation Policy </h3>
+                    <p> This reservation is non-refundable. </p>
+                    <p> Review the Host's full cancellation policy which applies even if you cancel for illness or disruptions caused by COVID-19. </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <% if (user !== null) { %>
+        <section class="snackbar">
+            <button type="button" style="visibility: hidden;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                    <path d="m6 6 20 20M26 6 6 26"></path>
+                </svg>
+            </button>
+
+            <span> Welcome to Airbnb, <%= user.name %> </span>
+
+            <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                    <path d="m6 6 20 20M26 6 6 26"></path>
+                </svg>
+            </button>
+        </section>
+    <% } %>
+
+    <footer> <%- include('./partials/footer') %> </footer>
+
+    <script src="../public/javascript/room.js"></script>
+
+    <% if (user === null) { %>
+        <script src="../public/javascript/modal.js"></script>
+    <% } %>
+</body>
+</html>

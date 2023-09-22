@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Holiday Homes & Apartments Rentals • Airbnb </title>
+
+    <link rel="shortcut icon" href="../public/images/airbnb_small.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="../public/css/room_box.css">
+
+    <% if (user === null) { %>
+        <link rel="stylesheet" href="../public/css/modal.css">
+    <% } %>
+
+    <script src="https://kit.fontawesome.com/7748f3a2f4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- Airbnb logo with clickable link -->
+
+            <div id="logo-box">
+                <a href="/">
+                    <img src="../public/images/airbnb_large.svg" alt="Airbnb" title="Airbnb">
+                </a>
+            </div>
+
+            <!-- Search box to search hotels on any place -->
+
+            <div id="search-box">
+                <div id="search-bar">
+                    <input type="text" name="search" id="search" placeholder="Search rooms here"
+                        title="Search rooms here" autofocus required>
+                    <div class="search-icon">
+                        <img src="../public/images/search.svg" alt="search" title="search">
+                    </div>
+                </div>
+            </div>
+
+            <div id="profile-box">
+                <a href="/host">
+                    <button type="button" class="hosts-link">
+                        <% if (user === null) { %>
+                            Airbnb your home
+                        <% } else { %>
+                            Switch to hosting
+                        <% } %>
+                    </button>
+                </a>
+                <button type="button" class="globe">
+                    <img src="../public/images/globe.svg" alt="globe" title="globe">
+                </button>
+                <div class="dropdown">
+                    <button type="button" class="show-menu" id="profile">
+                        <img src="../public/images/bars.svg" alt="bars" class="bars show-menu">
+                        <img src="../public/images/avatar.svg" alt="user" title="user" class="user show-menu">
+                    </button>
+
+                    <% if (user === null) { %>
+                        <%- include('./partials/login_dropdown') %>
+                    <% } else { %>
+                        <%- include('./partials/profile_dropdown') %>
+                    <% } %>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <% if (user === null) { %>
+        <%- include('./partials/modal') %>
+    <% } %>
+
+    <main>
+        <section class="type-and-filter">
+            <div class="room-types">
+                <button type="button" class="caret">
+                    <img src="../public/images/go_left.svg" alt="left">
+                </button>
+
+                <button type="button" class="type-option active-type">
+                    <img src="../public/images/trending.jpg" alt="trending" class="type-image active-image">
+                    Trending
+                </button>
+                <input type="radio" name="type" checked>
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/amazing_views.jpg" alt="amazing views" class="type-image">
+                    Amazing views
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/islands.jpg" alt="islands" class="type-image">
+                    Islands
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/beds_n_breakfasts.jpg" alt="beds_n_breakfasts" class="type-image">
+                    Beds & breakfasts
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/rooms.jpg" alt="rooms" class="type-image">
+                    Rooms
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/pools.jpg" alt="amazing pools" class="type-image">
+                    Amazing pools
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/beachfront.jpg" alt="beachfront" class="type-image">
+                    Beachfront
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/mountains.jpg" alt="top of the world" class="type-image">
+                    Top of the world
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/cabins.jpg" alt="cabins" class="type-image">
+                    Cabins
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/countryside.jpg" alt="countryside" class="type-image">
+                    Countryside
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/camping.jpg" alt="camping" class="type-image">
+                    Camping
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/historical_homes.jpg" alt="historical homes" class="type-image">
+                    Historical homes
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/castles.jpg" alt="castles" class="type-image">
+                    Castles
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/iconic_cities.jpg" alt="iconic cities" class="type-image">
+                    Iconic Cities
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/design.jpg" alt="design" class="type-image">
+                    Design
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/lakefront.jpg" alt="lakefront" class="type-image">
+                    Lakefront
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/farms.jpg" alt="farms" class="type-image">
+                    Farms
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/national_parks.jpg" alt="national parks" class="type-image">
+                    National Parks
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/luxury.jpg" alt="luxury" class="type-image">
+                    Luxe
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/omg.jpg" alt="omg" class="type-image">
+                    OMG!
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/tiny_homes.jpg" alt="tiny homes" class="type-image">
+                    Tiny homes
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/tropical.jpg" alt="tropical" class="type-image">
+                    Tropical
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/treehouses.jpg" alt="treehouses" class="type-image">
+                    Treehouses
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/new.jpg" alt="new" class="type-image">
+                    New
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/campervans.jpg" alt="campervans" class="type-image">
+                    Campervans
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/desert.jpg" alt="desert" class="type-image">
+                    Desert
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/arctic.jpg" alt="arctic" class="type-image">
+                    Arctic
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/towers.jpg" alt="towers" class="type-image">
+                    Towers
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/boats.jpg" alt="boats" class="type-image">
+                    Boats
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/vineyards.jpg" alt="vineyards" class="type-image">
+                    Vineyards
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/play.jpg" alt="play" class="type-image">
+                    Play
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="type-option">
+                    <img src="../public/images/creative_spaces.jpg" alt="creative spaces" class="type-image">
+                    Creative spaces
+                </button>
+                <input type="radio" name="type">
+
+                <button type="button" class="caret">
+                    <img src="../public/images/go_right.svg" alt="right">
+                </button>
+            </div>
+
+            <div class="filter-box">
+                <button type="button" id="filter">
+                    <img src="../public/images/filter.svg" alt="filters">
+                    Filters
+                </button>
+            </div>
+        </section>
+
+        <% if (rooms.length === 0) { %>
+            <div id="no-result-box">
+                <h1 id="sad-face-emo"> ( ˘︹˘ ) </h1>
+                <h1 id="no-result"> Oops! No result found </h1>
+                <h4 id="inconvenience-message"> We apologize, but you can rest assured that we will have new results
+                    soon. </h4>
+            </div>
+        <% } else { %>
+            <div id="rooms">
+                <% for (const room of rooms) { %>
+                    <% const rating = Number.parseFloat(room.rating); %>
+
+                    <% let loved = ''; %>
+
+                    <% if (user !== null) { %>
+                        <% if (user.wishlist.includes(room.roomId)) { %>
+                            <% loved = 'loved' %>
+                        <% } %>
+                    <% } %>
+
+                    <div class="room">
+                        <div class="room-preview">
+                            <% if (rating === 0) { %>
+                                <div class="ribbon">
+                                    <span> New </span>
+                                </div>
+                            <% } %>
+
+                            <a href="/rooms/<%= room.roomId %>" target="_blank">
+                                <% for (const image of room.images) { %>
+                                    <img src="<%= image %>" alt="room-image">
+                                <% } %>
+                            </a>
+
+                            <button type="button" id="toggle-wishlist">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" class="<%= loved %> wishlist">
+                                    <path
+                                        d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z">
+                                    </path>
+                                </svg>
+                            </button>
+
+                            <button type="button" class="left-caret">
+                                <img src="../public/images/left_caret.svg" alt="left">
+                            </button>
+
+                            <button type="button" class="right-caret">
+                                <img src="../public/images/right_caret.svg" alt="right">
+                            </button>
+                        </div>
+
+                        <p class="room-id" hidden> <%= room.roomId %> </p>
+
+                        <a href="/rooms/<%= room.roomId %>" target="_blank" class="room-link">
+                            <div class="place-rating">
+                                <span class="place">
+                                    <%= room.location.city %>,
+                                    <%= room.location.country %>
+                                </span>
+
+                                <span class="rating">
+                                    <img src="../public/images/star.svg" alt="rating">
+                                    <% if (rating === 0) { %>
+                                        New
+                                    <% } else { %>
+                                        <%= rating %>
+                                    <% } %>
+                                </span>
+                            </div>
+                            <div class="type">
+                                <%= room.roomType %>
+                                hosted by
+                                <%= room.ownerName.split(' ')[0] %>
+                            </div>
+                            <div class="available-date">
+                                <% const roomAvailableFrom = room.availableFrom.toString(); %>
+
+                                <%= roomAvailableFrom.slice(8, 10) %>
+                                <%= roomAvailableFrom.slice(4, 7) %>
+
+                                -
+
+                                <% const roomAvailableUpto = room.availableUpto.toString(); %>
+
+                                <%= roomAvailableUpto.slice(8, 10) %>
+                                <%= roomAvailableUpto.slice(4, 7) %>
+                            </div>
+                            <div class="price">
+                                &#8377; <%= room.price %> night
+                            </div>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+    </main>
+
+    <% if (user !== null) { %>
+        <section class="snackbar">
+            <button type="button" style="visibility: hidden;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                    <path d="m6 6 20 20M26 6 6 26"></path>
+                </svg>
+            </button>
+
+            <span> Welcome to Airbnb, <%= user.name %> </span>
+
+            <button type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false">
+                    <path d="m6 6 20 20M26 6 6 26"></path>
+                </svg>
+            </button>
+        </section>
+    <% } %>
+
+    <footer>
+        <div class="footer-links">
+            &copy; <span id="year">
+                &nbsp; <%= new Date().getUTCFullYear() %> &nbsp;
+            </span> Airbnb, Inc.
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Privacy </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Terms </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Sitemap </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Company details </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Destinations </a>
+        </div>
+
+        <div class="footer-icons">
+            <a href="javascript:void(0)">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="javascript:void(0)">
+                <i class="fa-regular fa-heart"></i>
+            </a>
+            <a href="javascript:void(0)">
+                <i class="fa-solid fa-circle-user"></i>
+            </a>
+        </div>
+
+        <div class="footer-links support">
+            <button type="button" class="globe">
+                <img src="../public/images/globe.svg" alt="globe" title="globe">
+            </button>
+            <a href="javascript:void(0)"> English (IN) </a>
+            <a href="javascript:void(0)"> &#8377; INR </a>
+            <a href="javascript:void(0)"> Support & Resources </a>
+        </div>
+    </footer>
+
+    <script src="../public/javascript/home.js"></script>
+    <script src="../public/javascript/dropdown.js"></script>
+    <script src="../public/javascript/room_box.js"></script>
+
+    <% if (user === null) { %>
+        <script src="../public/javascript/modal.js"></script>
+    <% } %>
+</body>
+</html>

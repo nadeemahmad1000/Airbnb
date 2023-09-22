@@ -1,0 +1,528 @@
+nav {
+    grid-template-columns: auto 1fr;
+}
+
+#logo-box > h2 {
+    color: #ff385c;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.room-info {
+    display: flex;
+    place-items: center;
+    place-content: flex-end;
+}
+
+.room-info > h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-image: radial-gradient(circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+main {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+#room-info-form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(24rem, auto));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#room-info-form > div {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dddddd;
+    border-radius: 0.5rem;
+    padding: 2rem 1rem;
+}
+
+#room-info-form > div > h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, auto));
+    gap: 1rem;
+}
+
+.icon-button {
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+    border: 1px solid #dddddd;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    cursor: pointer;
+    background: #ffffff;
+    transition: 0.2s all;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.icon-button:active {
+    transform: scale(0.95);
+}
+
+.room-icon, .shared-room-icon {
+    margin: 0.5rem;
+}
+
+.hide, .room-type > input, .place-type > input, .room-basic-info > div > div > input, .room-facility > input, .room-description > input, #room-image-button > input, .room-image-box > div > div > input {
+    visibility: hidden;
+    position: absolute;
+}
+
+.input-box {
+    width: 100%;
+    border: 1px solid #dddddd;
+    border-radius: 0.25rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    background: #f5f5f5;
+}
+
+.icon {
+    color: var(--primary-color);
+    font-size: 1.125rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 100%;
+}
+
+.icon:hover {
+    background: #ffffff;
+}
+
+.input-box > input {
+    width: calc(100% - 1.5rem);
+    font-size: 1rem;
+    padding: 0.875rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: #f5f5f5;
+}
+
+.room-basic-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, auto));
+    gap: 1.5rem 2rem;
+}
+
+.room-basic-info > div {
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+.room-basic-info > div > div {
+    display: flex;
+    place-items: center;
+}
+
+.less-button, .more-button {
+    padding: 0.375rem 0.5rem;
+    border: 1px solid #dddddd;
+    border-radius: 100%;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.less-button > img, .more-button > img {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.count {
+    margin: 0 1rem;
+}
+
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding: 1rem;
+    border: 1px solid #dddddd;
+    border-radius: 0.5rem;
+    background: #f5f5f5;
+}
+
+#title {
+    min-height: 4rem;
+    max-height: 6rem;
+}
+
+#description {
+    min-height: 8rem;
+    max-height: 16rem;
+}
+
+.resize {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.room-price, .room-discount {
+    display: flex;
+    place-items: flex-end;
+    margin-bottom: 3rem;
+}
+
+.room-price > span, .room-price > input, .room-discount > span, .room-discount > input {
+    font-size: 3rem;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    user-select: none;
+}
+
+.room-price > input, .room-discount > input {
+    width: 15rem;
+    margin-left: 0.5rem;
+}
+
+.fa-pen {
+    padding: 0.5rem;
+    border: 1px solid #dddddd;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.active {
+    background: #f5f5f5;
+    border-color: #222222;
+}
+
+.address-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.address {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dddddd;
+    border-radius: 0.25rem;
+    background: #f5f5f5;
+}
+
+.security-info {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    gap: 1rem;
+}
+
+.security-info > div {
+    display: flex;
+    place-content: space-between;
+}
+
+.security-info > div > input {
+    background: #222222;
+    width: 1rem;
+    height: 1rem;
+}
+
+.availability > input {
+    width: 50%;
+    font-size: 0.92rem;
+    padding: 1rem 2rem;
+    border: 1px solid #dddddd;
+    border-radius: 0.5rem;
+}
+
+.hidden-status-box {
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+.hidden-status-box > input {
+    background: #222222;
+    width: 1rem;
+    height: 1rem;
+}
+
+.room-image-box {
+    width: 100%;
+    padding: 2rem 1rem;
+    border: 1px solid #dddddd;
+    border-radius: 0.5rem;
+}
+
+.room-image-box > h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.room-image-box > div {
+    width: 100%;
+}
+
+.room-image-box > div, .room-image-box > div > div {
+    display: flex;
+    flex-wrap: wrap;
+    place-items: center;
+    place-content: center;
+}
+
+#room-image-button {
+    width: 16rem;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+    padding: 3rem;
+    border: 1px dashed #222222;
+    border-radius: 0.5rem;
+    background: #f5f5f5;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+#room-image-button > img {
+    width: 2rem;
+    height: 2rem;
+}
+
+#room-image-button:active {
+    transform: scale(0.95);
+}
+
+.drag {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.choose {
+    font-size: 0.875rem;
+}
+
+.image-box {
+    width: 16rem;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    border-radius: 0.5rem;
+    border: 1px solid #dddddd;
+    margin: 0.5rem;
+    z-index: 9;
+}
+
+.image-box > img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.image-box > button {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    background: #ffffff99;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.image-box > button:hover {
+    background: #ffffff;
+}
+
+.image-box > button:active {
+    transform: scale(0.96);
+}
+
+.image-box > button > i {
+    font-size: 0.95rem;
+}
+
+.submit-button-box {
+    width: 100%;
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.submit-button {
+    width: 60%;
+    height: 3.5rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: 1rem 0;
+    margin-top: 3rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 1px solid #ff385c;
+    background-image: radial-gradient( circle at center, #ff385c 0%, #e61e4d 27.5%, #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100% );
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.submit-button > img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.875rem;
+}
+
+.submit-button > i {
+    font-size: 1.125rem;
+    color: #ffffff;
+    margin-right: 0.875rem;
+}
+
+.submit-button:hover {
+    filter: brightness(0.925);
+}
+
+.submit-button:active {
+    transform: scale(0.95);
+}
+
+.deactivate {
+    cursor: not-allowed;
+    border: none;
+    background-image: radial-gradient( circle at center, #faf0fa 0%, #e6dceb 27.5%, #e3dcdc 40%, #d7d2e6 57.5%, #bdc8dc 75%, #bdc8c8 100% );
+    cursor: not-allowed;
+}
+
+.loading-dot {
+    position: relative;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 100%;
+    background-color: var(--theme-color);
+    color: var(--theme-color);
+    animation: loading-dot 1s infinite linear alternate;
+    animation-delay: 0.5s;
+}
+
+.loading-dot::before, .loading-dot::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 100%;
+    background-color: var(--theme-color);
+    color: var(--theme-color);
+    animation: loading-dot 1s infinite alternate;
+}
+
+.loading-dot::before {
+    left: -15px;
+    animation-delay: 0s;
+}
+
+.loading-dot::after {
+    left: 15px;
+    animation-delay: 1s;
+}
+
+@keyframes loading-dot {
+    0% {
+        background-color: #ff385c;
+    }
+
+    50%, 100% {
+        background-color: #ff385c40;
+    }
+}
+
+/* footer starts here */
+
+#footer {
+    width: 100%;
+    background: #ffffff;
+    padding: 0.25rem 2.5rem;
+    border-top: 1px solid #e4e4e4;
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+}
+
+.footer-links, .footer-links > a, .dot {
+    color: #333333;
+    font-size: 0.92rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    place-items: center;
+    place-content: center;
+}
+
+.footer-links > a:hover {
+    color: #222222;
+    text-decoration: underline;
+}
+
+.dot {
+    margin: 0 0.5rem;
+}
+
+.support > a {
+    font-weight: 500;
+    margin: 0 0.5rem;
+}
+
+/* media query for responsiveness */
+
+@media only screen and (max-width: 1024px) {
+    #footer {
+        position: static;
+        padding: 0.5rem 0;
+        flex-direction: column-reverse;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #footer {
+        display: none;
+    }
+}

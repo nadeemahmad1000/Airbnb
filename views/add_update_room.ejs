@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= (room === null ? `Add new room` : `Update room info`) %> • Airbnb
+    </title>
+
+    <link rel="shortcut icon" href="../public/images/airbnb_small.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/add_update_room.css">
+
+    <script src="https://kit.fontawesome.com/7748f3a2f4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo-box">
+                <a href="/host">
+                    <img src="../public/images/airbnb_black.svg" alt="Airbnb" title="Airbnb">
+                </a>
+                <h2> host </h2>
+            </div>
+
+            <div class="room-info">
+                <h2>
+                    <% if (room === null) { %>
+                        Add new room
+                    <% } else { %>
+                        Update room info : <%= room.roomId %>
+                    <% } %>
+                </h2>
+            </div>
+        </nav>
+    </header>
+
+    <% const firstName = user.name.split(' ')[0]; %>
+
+    <main>
+        <form action="javascript:void(0)">
+            <div id="room-info-form">
+                <div>
+                    <h3> Your room's unique Airbnb ID </h3>
+
+                    <div class="room-id-box input-box">
+                        <i class="fa-solid fa-house icon"></i>
+
+                        <input type="text" name="roomId" id="room-id" value="<%= ((room === null) ? (`XXXXXX`) : (room.roomId)) %>" readOnly required>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Room owner's unique Airbnb ID </h3>
+
+                    <div class="owner-id-box input-box">
+                        <i class="fa-solid fa-id-card icon"></i>
+
+                        <input type="text" name="" id="hidden-owner-id" value="••••••••••" readonly required>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Airbnb room owner name </h3>
+
+                    <div class="owner-name-box input-box">
+                        <i class="fa-solid fa-signature icon"></i>
+
+                        <input type="text" name="ownerName" id="owner-name" value="<%= user.name %>" readonly required>
+                    </div>
+                </div>
+
+                <div>
+                    <% let active = null; %>
+                    <% let checked = null; %>
+
+                    <h3> Which of these best describes your place? </h3>
+
+                    <div class="options room-type">
+                        <% if (room === null || room.roomType === `House`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/house.svg" alt="house" title="house">
+                            House
+                        </button>
+                        <input type="radio" name="roomType" value="House" required <%= checked %>>
+
+                        <% if (room !== null && room.roomType === `Flat`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/apartment.svg" alt="flat/apartment" title="flat / apartment">
+                            Flat / Apartment
+                        </button>
+                        <input type="radio" name="roomType" value="Flat" required <%= checked %>>
+
+                        <% if (room !== null && room.roomType === `Hotel`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/hotel.svg" alt="hotel" title="hotel">
+                            Hotel
+                        </button>
+                        <input type="radio" name="roomType" value="Hotel" required <%= checked %>>
+
+                        <% if (room !== null && room.roomType === `Villa`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/villa.svg" alt="villa" title="villa">
+                            Villa
+                        </button>
+                        <input type="radio" name="roomType" value="Villa" required <%= checked %>>
+
+                        <% if (room !== null && room.roomType === `Castle`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/castle.svg" alt="castle" title="castle">
+                            Castle
+                        </button>
+                        <input type="radio" name="roomType" value="Castle" required <%= checked %>>
+
+                        <% if (room !== null && room.roomType === `Tree house`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/treehouse.svg" alt="treehouse" title="treehouse">
+                            Tree house
+                        </button>
+                        <input type="radio" name="roomType" value="Tree house" required <%= checked %>>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> What type of place will guests have? </h3>
+
+                    <div class="options place-type">
+                        <% if (room === null || room.placeType === `An entire place`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/house.svg" alt="house" title="house">
+                            An entire place
+                        </button>
+                        <input type="radio" name="placeType" value="An entire place" required <%= checked %>>
+
+                        <% if (room !== null && room.placeType === `A room`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/door.svg" alt="room" title="room" class="room-icon">
+                            A room
+                        </button>
+                        <input type="radio" name="placeType" value="A room" required <%= checked %>>
+
+                        <% if (room !== null && room.placeType === `A shared room`) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/shared_room.svg" alt="shared-room" title="shared-room" class="shared-room-icon">
+                            A shared room
+                        </button>
+                        <input type="radio" name="placeType" value="A shared room" required <%= checked %>>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Share some basics about your place </h3>
+
+                    <div class="room-basic-info">
+                        <div>
+                            <% const guestCount = (room === null ? (1) : (room.basicInfo.guests)); %>
+
+                            <div> Guests </div>
+                            <div>
+                                <button type="button" class="less-button" id="remove-guest">
+                                    <img src="../public/images/less.svg" alt="less" title="less">
+                                </button>
+                                <span class="count" id="guest-count">
+                                    <%= guestCount %>
+                                </span>
+                                <input type="number" name="basicInfo[guests]" value="<%= guestCount %>" inputmode="numeric" min="1" max="16" required>
+                                <button type="button" class="more-button" id="add-guest">
+                                    <img src="../public/images/more.svg" alt="more" title="more">
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <% const bedroomCount = (room === null ? (1) : (room.basicInfo.bedrooms)); %>
+
+                            <div> Bedrooms </div>
+                            <div>
+                                <button type="button" class="less-button" id="remove-bedroom">
+                                    <img src="../public/images/less.svg" alt="less" title="less">
+                                </button>
+                                <span class="count" id="bedroom-count">
+                                    <%= bedroomCount %>
+                                </span>
+                                <input type="number" name="basicInfo[bedrooms]" value="<%= bedroomCount %>" inputmode="numeric" min="1" max="12" required>
+                                <button type="button" class="more-button" id="add-bedroom">
+                                    <img src="../public/images/more.svg" alt="more" title="more">
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <% const bedCount = (room === null ? (1) : (room.basicInfo.beds)); %>
+
+                            <div> Beds </div>
+                            <div>
+                                <button type="button" class="less-button" id="remove-bed">
+                                    <img src="../public/images/less.svg" alt="less" title="less">
+                                </button>
+                                <span class="count" id="bed-count">
+                                    <%= bedCount %>
+                                </span>
+                                <input type="number" name="basicInfo[beds]" value="<%= bedCount %>" inputmode="numeric" min="1" max="12" required>
+                                <button type="button" class="more-button" id="add-bed">
+                                    <img src="../public/images/more.svg" alt="more" title="more">
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <% const bathroomCount = (room === null ? (1) : (room.basicInfo.bathrooms)); %>
+
+                            <div> Bathrooms </div>
+                            <div>
+                                <button type="button" class="less-button" id="remove-bathroom">
+                                    <img src="../public/images/less.svg" alt="less" title="less">
+                                </button>
+                                <span class="count" id="bathroom-count">
+                                    <%= bathroomCount %>
+                                </span>
+                                <input type="number" name="basicInfo[bathrooms]" value="<%= bathroomCount %>" inputmode="numeric" min="1" max="12" required>
+                                <button type="button" class="more-button" id="add-bathroom">
+                                    <img src="../public/images/more.svg" alt="more" title="more">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Tell guests what your place has to offer </h3>
+
+                    <div class="options room-facility">
+                        <% if (room !== null && room.facilities.includes(`wifi`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/internet.svg" alt="wifi" title="wifi">
+                            Wifi
+                        </button>
+                        <input type="checkbox" name="facilities[]" value="wifi" <%= checked %>>
+
+                        <% if (room !== null && room.facilities.includes(`tv`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/television.svg" alt="TV" title="TV">
+                            TV
+                        </button>
+                        <input type="checkbox" name="facilities[]" value="tv" <%= checked %>>
+
+                        <% if (room !== null && room.facilities.includes(`kitchen`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/oven.svg" alt="Kitchen" title="Kitchen">
+                            Kitchen
+                        </button>
+                        <input type="checkbox" name="facilities[]" value="kitchen" <%= checked %>>
+
+                        <% if (room !== null && room.facilities.includes(`washingMachine`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/washing_machine.svg" alt="Washing machine" title="Washing machine">
+                            Washing machine
+                        </button>
+                        <input type="checkbox" name="facilities[]" value="washingMachine" <%= checked %>>
+
+                        <% if (room !== null && room.facilities.includes(`parking`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/vehicle.svg" alt="parking" title="parking">
+                            Free parking
+                        </button>
+                        <input type="checkbox" name="facilities[]" value="parking" <%= checked %>>
+
+                        <% if (room !== null && room.facilities.includes(`ac`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/ac.svg" alt="Air conditioning" title="Air conditioning">
+                            AC
+                        </button>
+                        <input type="checkbox" name="facilities[]" value="ac" <%= checked %>>
+                    </div>
+                </div>
+
+                <div>
+                    <% let roomTitle = `Room in a home hosted by ${firstName}`; %>
+
+                    <% if (room !== null) roomTitle = room.title; %>
+
+                    <h3> Now, let's give your house a title </h3>
+
+                    <textarea name="title" id="title" cols="44" rows="2" minlength="8" maxlength="60" placeholder="Short titles work best. Have fun with it - you can always change it later." required><%= roomTitle %></textarea>
+                </div>
+
+                <div>
+                    <h3> Next, let's describe your house </h3>
+
+                    <div class="options room-description">
+                        <% if (room !== null && room.features.includes(`peaceful`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/peaceful.svg" alt="peaceful" title="peaceful" class="resize">
+                            Peaceful
+                        </button>
+                        <input type="checkbox" name="features[]" value="peaceful" <%= checked %>>
+
+                        <% if (room !== null && room.features.includes(`unique`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/unique.svg" alt="unique" title="unique" class="resize">
+                            Unique
+                        </button>
+                        <input type="checkbox" name="features[]" value="unique" <%= checked %>>
+
+                        <% if (room !== null && room.features.includes(`familyFriendly`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/family_friendly.svg" alt="family-friendly" title="family-friendly" class="resize">
+                            Family-friendly
+                        </button>
+                        <input type="checkbox" name="features[]" value="familyFriendly" <%= checked %>>
+
+                        <% if (room !== null && room.features.includes(`stylish`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/stylish.svg" alt="stylish" title="stylish" class="resize">
+                            Stylish
+                        </button>
+                        <input type="checkbox" name="features[]" value="stylish" <%= checked %>>
+
+                        <% if (room !== null && room.features.includes(`central`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/central.svg" alt="central" title="central" class="resize">
+                            Central
+                        </button>
+                        <input type="checkbox" name="features[]" value="central" <%= checked %>>
+
+                        <% if (room !== null && room.features.includes(`spacious`)) { %>
+                            <% active = 'active', checked = 'checked'; %>
+                        <% } else { %>
+                            <% active = null, checked = null; %>
+                        <% } %>
+
+                        <button type="button" class="icon-button <%= active %>">
+                            <img src="../public/images/spacious.svg" alt="spacious" title="spacious" class="resize">
+                            Spacious
+                        </button>
+                        <input type="checkbox" name="features[]" value="spacious" <%= checked %>>
+                    </div>
+                </div>
+
+                <div>
+                    <% let roomDescription = 'Be prepared to experience an unparalleled comfort & hospitality at our stay. Also, enjoy your time at this beautiful location while we serve you the best guest-experience.'; %>
+
+                    <h3> Create your description </h3>
+
+                    <% if (room !== null) roomDescription = room.description %>
+
+                    <textarea name="description" id="description" cols="44" rows="8" minlength="20" maxlength="500" placeholder="Share what makes your place special." required><%= roomDescription %></textarea>
+                </div>
+
+                <div>
+                    <h3> Where's your place located? </h3>
+
+                    <div class="address-box">
+                        <% const country = ((room === null) ? ('India') : (room.location.country)); %>
+
+                        <input type="text" name="location[country]" id="country" placeholder="country" class="address" value="<%= country %>" autocomplete="off" required>
+
+                        <% const address = ((room === null) ? ('') : (room.location.address)); %>
+
+                        <input type="text" name="location[address]" id="address" placeholder="House / Flat / Building with Street name" class="address" autocomplete="off" minlength="4" maxlength="60" pattern=".{4,60}" value="<%= address %>" required>
+
+                        <% const city = ((room === null) ? ('') : (room.location.city)); %>
+
+                        <input type="text" name="location[city]" id="city" placeholder="city / town" class="address" autocomplete="off" minlength="4" maxlength="24" pattern=".{4,24}" value="<%= city %>" required>
+
+                        <% const pincode = ((room === null) ? ('') : (room.location.pincode)); %>
+
+                        <input type="text" name="location[pincode]" id="pincode" placeholder="pincode" class="address" autocomplete="off" minlength="6" maxlength="6" pattern=".{6,6}" inputmode="numeric" value="<%= pincode %>" required>
+
+                        <% const state = ((room === null) ? ('') : (room.location.state)); %>
+
+                        <input type="text" name="location[state]" id="state" placeholder="state" class="address" autocomplete="off" minlength="3" maxlength="30" pattern=".{3,30}" value="<%= state %>" required>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Now, set your price </h3>
+
+                    <% const price = ((room === null) ? ('2,023') : (room.price)); %>
+
+                    <div class="room-price">
+                        <span> &#8377; </span>
+                        <input type="text" name="price" value="<%= price %>" minlength="3" maxlength="8" autocomplete="off" inputmode="numeric" pattern=".{3,8}" required>
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+
+                    <h3> Next, Add some discount </h3>
+
+                    <% const discount = ((room === null) ? (15) : (room.discount)); %>
+
+                    <div class="room-discount">
+                        <span> % </span>
+                        <input type="text" name="discount" value="<%= discount %>" minlength="1" maxlength="2" autocomplete="off" inputmode="numeric" pattern=".{1,2}" required>
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Does your place have any of these? </h3>
+
+                    <div class="security-info">
+                        <% if (room !== null && room.security.includes('securityCamera')) { %>
+                            <% checked = 'checked'; %>
+                        <% } else { %>
+                            <% checked = ''; %>
+                        <% } %>
+
+                        <div>
+                            <label for="camera"> Security camera(s) </label>
+                            <input type="checkbox" id="camera" name="security[]" value="securityCamera" <%= checked %>>
+                        </div>
+
+                        <% if (room !== null && room.security.includes('smokeAlarm')) { %>
+                            <% checked = 'checked'; %>
+                        <% } else { %>
+                            <% checked = ''; %>
+                        <% } %>
+
+                        <div>
+                            <label for="smoke-alarm"> Smoke Alarm </label>
+                            <input type="checkbox" id="smoke-alarm" name="security[]" value="smokeAlarm" <%= checked %>>
+                        </div>
+
+                        <% if (room !== null && room.security.includes('fireExtinguisher')) { %>
+                            <% checked = 'checked'; %>
+                        <% } else { %>
+                            <% checked = ''; %>
+                        <% } %>
+
+                        <div>
+                            <label for="fire-extinguisher">
+                                Fire Extinguisher
+                            </label>
+                            <input type="checkbox" id="fire-extinguisher" name="security[]" value="fireExtinguisher" <%= checked %>>
+                        </div>
+                    </div>
+                </div>
+                
+                <% let date = new Date(); %>
+
+                <div>
+                    <h3> Your place is available from </h3>
+
+                    <% date.setDate(date.getDate() + 1); %>
+
+                    <% const availableFrom = ((room === null) ? (date) : (room.availableFrom)); %>
+
+                    <div class="availability">
+                        <input type="date" name="availableFrom" id="available-from" value="<%= availableFrom.toISOString().split('T')[0] %>" required>
+                    </div>
+                </div>
+
+                <% date = new Date(); %>
+
+                <div>
+                    <h3> Your place is available upto </h3>
+
+                    <% date.setDate(date.getDate() + 4); %>
+
+                    <% const availableUpto = ((room === null) ? (date) : (room.availableUpto)); %>
+
+                    <div class="availability">
+                        <input type="date" name="availableUpto" id="available-upto" value="<%= availableUpto.toISOString().split('T')[0] %>" required>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Choose your rooms' visibility status </h3>
+
+                    <% if (room !== null && room.hidden === true) { %>
+                        <% checked = 'checked'; %>
+                    <% } else { %>
+                        <% checked = ''; %>
+                    <% } %>
+
+                    <div class="hidden-status-box">
+                        <label for="hidden-status">
+                            Hide this room from Airbnb users for now ?
+                        </label>
+                        <input type="checkbox" name="hidden" id="hidden-status" value="true" <%= checked %>>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Your room was created at.. </h3>
+
+                    <% const createdAt = ((room === null) ? (new Date()) : (room.createdAt)) %>
+
+                    <div class="availability">
+                        <input type="date" name="createdAt" id="created-at" value="<%= createdAt.toISOString().split('T')[0] %>" readonly required>
+                    </div>
+                </div>
+
+                <div>
+                    <h3> Keywords associated with this room </h3>
+
+                    <% const keywords = ((room === null) ? (``) : (room.keywords.join(', '))); %>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-magnifying-glass icon"></i>
+
+                        <input type="text" name="keywords[]" id="keywords" placeholder="Searchable keywords for this room" title="Use commas to seperate two different keywords from each other." value="<%= keywords %>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-image-box">
+                <h3> Add some photos of your house </h3>
+
+                <div>
+                    <div id="room-image-preview">
+                        <% if (room !== null) { %>
+                            <% for (const imageSrc of room.images) { %>
+                                <div class="image-box">
+                                    <img src="<%= imageSrc %>" alt="image">
+                                    <button type="button" title="delete">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+
+                    <div>
+                        <input type="file" name="images" accept="image/*" min="1" max="8" multiple>
+
+                        <button type="button" id="room-image-button">
+                            <img src="../public/images/image.svg" alt="add images" title="add images">
+                            <span class="drag"> Drag your photos here </span>
+                            <span class="choose">
+                                Choose at least 1 photo
+                            </span>
+                            <input type="file" name="" accept="image/*" min="1" max="8" multiple>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-button-box">
+                <button type="submit" class="submit-button" id="submit">
+                    <% if (room === null) { %>
+                        <img src="../public/images/add_room.svg" alt="add new room" title="add new room">
+                        Add new room
+                    <% } else { %>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Update room info
+                    <% } %>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-links">
+            &copy; <span id="year">
+                &nbsp; <%= new Date().getUTCFullYear() %> &nbsp;
+            </span> Airbnb, Inc.
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Privacy </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Terms </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Sitemap </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Company details </a>
+            <span class="dot"> • </span>
+            <a href="javascript:void(0)"> Destinations </a>
+        </div>
+
+        <div class="footer-links support">
+            <button type="button" class="globe">
+                <img src="../public/images/globe.svg" alt="globe" title="globe">
+            </button>
+            <a href="javascript:void(0)"> English (IN) </a>
+            <a href="javascript:void(0)"> &#8377; INR </a>
+            <a href="javascript:void(0)"> Support & Resources </a>
+        </div>
+    </footer>
+
+    <script src="../public/javascript/add_update_room.js"></script>
+
+    <% if (room === null) { %>
+        <script src="../public/javascript/add_new_room.js"></script>
+    <% } else { %>
+        <script src="../public/javascript/update_room_info.js"></script>
+    <% } %>
+</body>
+</html>
